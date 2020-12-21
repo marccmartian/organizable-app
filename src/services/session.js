@@ -11,13 +11,8 @@ export const getUserFetch = async (objUser) => {
     });
 
     const data = await response.json();
-
-    if (response.ok) {
-      return data;
-    } else {
-      return data.errors.message;
-    }
+    return response.ok ? { data } : { error: data.errors.message };
   } catch (error) {
-    return "Network error";
+    return { error: "Network error" };
   }
 };

@@ -1,5 +1,10 @@
 import React, { useContext, useState } from "react";
-import { FormContainer, Form, FormLink } from "../components/Form/FormElements";
+import {
+  FormContainer,
+  Form,
+  FormLink,
+  ErrorText,
+} from "../components/Form/FormElements";
 import { ButtonWrapper, GreenButton } from "../components/Form/FormButtons";
 import FormInputData from "../components/Form/FormInputData";
 import { getUserFetch } from "../services/session";
@@ -13,6 +18,8 @@ const Login = () => {
     password: "",
   });
 
+  const [error, setError] = useState(null);
+
   const handleOnChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -23,8 +30,9 @@ const Login = () => {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-    const data = await getUserFetch(formData);
-    setUser(data);
+    const { data, error } = await getUserFetch(formData);
+
+    data ? setUser(data) : setError(error);
   };
 
   console.log(user);
@@ -49,6 +57,7 @@ const Login = () => {
         <ButtonWrapper>
           <GreenButton type="submit">Login</GreenButton>
           <FormLink>Create an account</FormLink>
+          {error && <ErrorText>{error}</ErrorText>}
         </ButtonWrapper>
       </Form>
     </FormContainer>

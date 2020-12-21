@@ -35,3 +35,8 @@ export const FormLink = styled.a`
   cursor: pointer;
   margin-top: 17px;
 `;
+
+export const ErrorText = styled.p`
+  color: red;
+  margin-top: 1rem;
+`;
