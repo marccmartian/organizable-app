@@ -1,16 +1,53 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FormContainer, Form, FormLink } from "../components/Form/FormElements";
 import { ButtonWrapper, GreenButton } from "../components/Form/FormButtons";
 import FormInputData from "../components/Form/FormInputData";
+import { getUserFetch } from "../services/session";
+import { UserContext } from "../App";
 
 const Login = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleOnChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = async (event) => {
+    event.preventDefault();
+    const data = await getUserFetch(formData);
+    setUser(data);
+  };
+
+  console.log(user);
+
   return (
     <FormContainer>
-      <Form>
-        <FormInputData id="username" label="Usename" type="text" />
-        <FormInputData id="password" label="Password" type="password" />
+      <Form onSubmit={handleOnSubmit}>
+        <FormInputData
+          id="username"
+          label="Usename"
+          type="text"
+          value={formData.username}
+          onChange={handleOnChange}
+        />
+        <FormInputData
+          id="password"
+          label="Password"
+          type="password"
+          value={formData.password}
+          onChange={handleOnChange}
+        />
         <ButtonWrapper>
-          <GreenButton>Login</GreenButton>
+          <GreenButton type="submit">Login</GreenButton>
           <FormLink>Create an account</FormLink>
         </ButtonWrapper>
       </Form>

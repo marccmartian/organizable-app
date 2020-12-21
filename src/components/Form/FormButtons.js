@@ -15,6 +15,11 @@ const Button = styled.button`
   cursor: pointer;
   background-color: var(--grayBtn);
   color: var(--textColor);
+  transition: all 0.1s linear;
+
+  :hover {
+    transform: scale(1.05);
+  }
 `;
 
 const GreenButton = styled(Button)`
