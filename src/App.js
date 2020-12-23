@@ -16,8 +16,8 @@ function App() {
         <Switch>
           <UserContext.Provider value={{ user, setUser }}>
             <Route exact path="/" component={Login} />
+            <Route exact path="/signup" component={Signup} />
           </UserContext.Provider>
-          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     </>

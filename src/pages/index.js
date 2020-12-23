@@ -35,8 +35,6 @@ const Login = () => {
     data ? setUser(data) : setError(error);
   };
 
-  console.log(user);
-
   return (
     <FormContainer>
       <Form onSubmit={handleOnSubmit}>
