@@ -7,7 +7,14 @@ const InputContainer = styled.div`
   margin-bottom: 6px;
 `;
 
-const FormInputData = ({ label, type, id, value, onChange }) => {
+const FormInputData = ({
+  label,
+  type,
+  id,
+  value,
+  onChange,
+  disabled = false,
+}) => {
   return (
     <InputContainer>
       <FormLabel htmlFor={id}>{label}</FormLabel>
@@ -17,6 +24,7 @@ const FormInputData = ({ label, type, id, value, onChange }) => {
         name={id}
         value={value}
         onChange={onChange}
+        disabled={disabled && "disabled"}
       />
     </InputContainer>
   );

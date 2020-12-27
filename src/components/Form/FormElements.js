@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-export const FormContainer = styled.main`
+export const FormContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +30,7 @@ export const FormInput = styled.input`
   font-size: 15px;
 `;
 
-export const FormLink = styled.a`
+export const FormLink = styled(Link)`
   text-decoration: none;
   color: var(--ligthBlue);
   font-size: 14px;

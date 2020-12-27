@@ -8,6 +8,12 @@ const ButtonWrapper = styled.div`
   margin-top: 30px;
 `;
 
+const HorizontalButtonWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+`;
+
 const Button = styled.button`
   border: none;
   border-radius: 3px;
@@ -15,7 +21,7 @@ const Button = styled.button`
   cursor: pointer;
   background-color: var(--grayBtn);
   color: var(--textColor);
-  transition: all 0.1s linear;
+  transition: all 0.05s linear;
 
   :hover {
     transform: scale(1.05);
@@ -32,4 +38,4 @@ const RedButton = styled(Button)`
   color: #fff;
 `;
 
-export { ButtonWrapper, Button, GreenButton, RedButton };
+export { ButtonWrapper, HorizontalButtonWrap, Button, GreenButton, RedButton };

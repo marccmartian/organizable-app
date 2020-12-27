@@ -1,4 +1,5 @@
 :root {
+  --bodyColor: #fafbfc;
   --textColor: #172b4d;
   --ligthBlue: #0079bf;
   --grayBtn: #ebecf0;
@@ -14,4 +15,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--bodyColor);
 }

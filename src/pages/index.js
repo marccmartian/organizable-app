@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   FormContainer,
   Form,
@@ -11,6 +12,8 @@ import { getUserFetch } from "../services/session";
 import { UserContext } from "../App";
 
 const Login = () => {
+  const history = useHistory();
+
   const { user, setUser } = useContext(UserContext);
 
   const [formData, setFormData] = useState({
@@ -32,7 +35,12 @@ const Login = () => {
     event.preventDefault();
     const { data, error } = await getUserFetch(formData);
 
-    data ? setUser(data) : setError(error);
+    if (data) {
+      setUser(data);
+      history.replace("/profile");
+    } else {
+      setError(error);
+    }
   };
 
   return (
@@ -54,7 +62,7 @@ const Login = () => {
         />
         <ButtonWrapper>
           <GreenButton type="submit">Login</GreenButton>
-          <FormLink>Create an account</FormLink>
+          <FormLink to="/signup">Create an account</FormLink>
           {error && <ErrorText>{error}</ErrorText>}
         </ButtonWrapper>
       </Form>
